@@ -28,6 +28,7 @@ public class Main {
         BodyPart mirror = new BodyPart("mirror", 233, true);
         BodyPart mirror2 = new BodyPart("mirror2", 233, true);
         IndividualClient client2 = new IndividualClient("UT_z", " _ ", "BMW");
+        IndividualClient client7 = new IndividualClient("Konstantin", " Egorov ", "Audi");
 
         List<Detail> details = new ArrayList<>();
 
