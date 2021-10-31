@@ -2,11 +2,11 @@ package com.solvd.autoservice;
 
 import com.solvd.autoservice.autoservice.*;
 import com.solvd.autoservice.cars.*;
-import com.solvd.autoservice.client.Client;
-import com.solvd.autoservice.client.IndividualClient;
-import com.solvd.autoservice.client.RegularClient;
+import com.solvd.autoservice.client.*;
 import com.solvd.autoservice.detail.BodyPart;
 import com.solvd.autoservice.detail.Detail;
+import com.solvd.autoservice.detail.DetailInStock;
+import com.solvd.autoservice.detail.Wheel;
 import com.solvd.autoservice.employee.Employee;
 import com.solvd.autoservice.employee.Manager;
 import com.solvd.autoservice.employee.StorageWorker;
@@ -31,6 +31,78 @@ public class Main {
         IndividualClient client26 = new IndividualClient("Konstantin", " Igorov ", "Audi");
         IndividualClient client48 = new IndividualClient("UT_z", " _ ", "BMW");
 
+        DetailInStock detailInStock = new DetailInStock();
+        detailInStock.setWheel(Wheel.R15);
+        LOGGER.info(Wheel.R15.getName());
+        LOGGER.info(Wheel.R15.name());
+
+        for (Wheel wheel1 : Wheel.values()) {
+            LOGGER.info(wheel1.name());
+        }
+
+        String name = " R15 ";
+        Wheel showWheelRadius = Wheel.showWheelRadius(name);
+        LOGGER.info(Wheel.showWheelRadius(name));
+
+        String radiusWheel;
+        if (Wheel.R15.equals(showWheelRadius)){
+            radiusWheel = " Wheel Radius - 15 ";
+        } else {
+            radiusWheel = " Wheel radius - 17 ";
+        }
+
+        LOGGER.info(radiusWheel);
+
+        switch (showWheelRadius){
+            case R15:
+                LOGGER.info(" Wheels R15 are in stock ");
+                break;
+            case R17:
+                LOGGER.info(" Wheels R17 are in stock ");
+                break;
+            default:
+                LOGGER.info(" No wheels is stock ");
+                break;
+        }
+
+        CarBrand carBrand = new CarBrand();
+        carBrand.setBrand(CarBrand.Brand.BMW);
+        LOGGER.info(Brand.BMW.getBrandName());
+
+        String brandName = " BMW ";
+        Brand showBrandName = Brand.showBrandName(name);
+        LOGGER.info(Brand.showBrandName(brandName));
+
+        String brands;
+        if (Brand.BMW.equals(showBrandName)){
+            brands = " BMW ";
+        }else {
+            brands = " Audi ";
+        }
+
+        LOGGER.info(brands);
+
+        OtherClient otherClient = new OtherClient();
+        otherClient.setForeignClient(OtherClient.ForeignClient.ASIA);
+        otherClient.setForeignClient(OtherClient.ForeignClient.USA);
+        LOGGER.info(ForeignClient.USA.getClientName());
+        LOGGER.info(ForeignClient.ASIA.name());
+
+        String clientName = " American ";
+        ForeignClient getClientName = ForeignClient.getClientName(clientName);
+        LOGGER.info(" American " + ForeignClient.getClientName(clientName));
+
+        switch (getClientName){
+            case USA:
+                LOGGER.info(" American client ");
+                break;
+            case ASIA:
+                LOGGER.info(" Asian client ");
+                break;
+            case EUROPE:
+                LOGGER.info(" European client");
+                break;
+        }
 
         List<Detail> details = new ArrayList<>();
 
