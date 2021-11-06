@@ -777,3 +777,102 @@
 2021-44-31 20:44:53.826 [main] INFO  com.solvd.autoservice.Main -  Will the order be completed?  true
 2021-44-31 20:44:53.827 [main] INFO  com.solvd.autoservice.Main -  Wrong Storage number
 2021-44-31 20:44:53.827 [main] INFO  com.solvd.autoservice.Main -  Finally 
+2021-26-01 22:26:44.790 [main] INFO  com.solvd.autoservice.Main -  Radius 15 
+2021-26-01 22:26:44.794 [main] INFO  com.solvd.autoservice.Main - R15
+2021-26-01 22:26:44.795 [main] INFO  com.solvd.autoservice.Main - R15
+2021-26-01 22:26:44.795 [main] INFO  com.solvd.autoservice.Main - R17
+2021-26-01 22:26:44.796 [main] INFO  com.solvd.autoservice.Main - R15
+2021-26-01 22:26:44.796 [main] INFO  com.solvd.autoservice.Main -  Wheel Radius - 15 
+2021-26-01 22:26:44.798 [main] INFO  com.solvd.autoservice.Main -  Wheels R15 are in stock 
+2021-26-01 22:26:44.799 [main] INFO  com.solvd.autoservice.Main -  BMW 
+2021-26-01 22:26:44.799 [main] INFO  com.solvd.autoservice.Main - BMW
+2021-26-01 22:26:44.800 [main] INFO  com.solvd.autoservice.Main -  Audi 
+2021-26-01 22:26:44.801 [main] INFO  com.solvd.autoservice.Main -  American 
+2021-26-01 22:26:44.801 [main] INFO  com.solvd.autoservice.Main - ASIA
+2021-26-01 22:26:44.801 [main] INFO  com.solvd.autoservice.Main -  American USA
+2021-26-01 22:26:44.801 [main] INFO  com.solvd.autoservice.Main -  American client 
+2021-26-01 22:26:44.802 [main] INFO  com.solvd.autoservice.Main - [Detail{detailName='mirror'}, Detail{detailName='mirror2'}, Detail{detailName='wheel'}]
+2021-26-01 22:26:44.804 [main] INFO  com.solvd.autoservice.Main - ID =  1 Regular Client Name = RegularClient{id=1, firstName='Artur', lastName='Hodyakov'}
+2021-26-01 22:26:44.804 [main] INFO  com.solvd.autoservice.Main - ID =  2 Regular Client Name = RegularClient{id=2, firstName='John', lastName='Kapustin'}
+2021-26-01 22:26:44.805 [main] INFO  com.solvd.autoservice.Main - ID =  3 Regular Client Name = RegularClient{id=3, firstName='David', lastName='Duhovny'}
+2021-26-01 22:26:44.806 [main] INFO  com.solvd.autoservice.Main -  John should be displayed RegularClient{id=2, firstName='John', lastName='Kapustin'}
+2021-26-01 22:26:44.807 [main] INFO  com.solvd.autoservice.Main -  Is empty false
+2021-26-01 22:26:44.807 [main] INFO  com.solvd.autoservice.Main -  Map Size 3
+2021-26-01 22:26:44.808 [main] INFO  com.solvd.autoservice.Main -  Map HashCode 120741952
+2021-26-01 22:26:44.808 [main] INFO  com.solvd.autoservice.Main -  Linked List First Detail{detailName='wheel'}
+2021-26-01 22:26:44.809 [main] INFO  com.solvd.autoservice.Main -  Linked List Last Detail{detailName='mirror2'}
+2021-26-01 22:26:44.810 [main] INFO  com.solvd.autoservice.Main -  Client from TreeSet [com.solvd.autoservice.client.IndividualClient@5cdd8682, com.solvd.autoservice.client.IndividualClient@d6da883, com.solvd.autoservice.client.IndividualClient@45afc369, com.solvd.autoservice.client.IndividualClient@5cdd8682, com.solvd.autoservice.client.IndividualClient@5cdd8682, com.solvd.autoservice.client.IndividualClient@45afc369]
+2021-26-01 22:26:44.810 [main] INFO  com.solvd.autoservice.Main - [Detail{detailName='mirror'}, Detail{detailName='mirror2'}, Detail{detailName='wheel'}]
+2021-26-01 22:26:44.811 [main] INFO  com.solvd.autoservice.Main - 3
+2021-26-01 22:26:44.811 [main] INFO  com.solvd.autoservice.Main - false
+2021-26-01 22:26:44.812 [main] INFO  com.solvd.autoservice.Main - [ Vin Code yegfugiu3678765; CarBrand Mercedes CarModel S class w223,  Capacity Volume Body  null; CarBrand Gaz CarModel 66,  CarBrand Harley Davidson CarModel Iron 833]
+2021-26-01 22:26:44.814 [main] INFO  com.solvd.autoservice.Main -  Vin Code yegfugiu3678765; CarBrand Mercedes CarModel S class w223
+2021-26-01 22:26:44.814 [main] INFO  com.solvd.autoservice.Main -  Capacity Volume Body  null; CarBrand Gaz CarModel 66
+2021-26-01 22:26:44.815 [main] INFO  com.solvd.autoservice.autoservice.Order -  List of details: 
+ 
+2021-26-01 22:26:44.815 [main] INFO  com.solvd.autoservice.autoservice.Order -  Name mirror Price 233
+
+2021-26-01 22:26:44.815 [main] INFO  com.solvd.autoservice.autoservice.Order -  Name mirror2 Price 233
+
+2021-26-01 22:26:44.815 [main] INFO  com.solvd.autoservice.autoservice.Order -  Name wheel Price 100
+
+2021-26-01 22:26:44.816 [main] INFO  com.solvd.autoservice.autoservice.AutoService -  Storage Number  0
+2021-26-01 22:26:44.818 [main] INFO  com.solvd.autoservice.Main -  Get max speed minivan 180
+2021-26-01 22:26:44.818 [main] INFO  com.solvd.autoservice.Main -  Get max speed minivan 200
+2021-26-01 22:26:44.824 [main] INFO  com.solvd.autoservice.Main -  Order can be completed Tue Nov 02 00:26:44 MSK 2021
+2021-26-01 22:26:44.824 [main] INFO  com.solvd.autoservice.Main -  Sum of the order 566
+2021-26-01 22:26:44.824 [main] INFO  com.solvd.autoservice.Main -  Client size 6
+2021-26-01 22:26:44.825 [main] INFO  com.solvd.autoservice.Main -  Details wheel mirror mirror2
+2021-26-01 22:26:44.825 [main] INFO  com.solvd.autoservice.Main -  Will the order be completed?  true
+2021-26-01 22:26:44.826 [main] INFO  com.solvd.autoservice.Main -  Wrong Storage number
+2021-26-01 22:26:44.827 [main] INFO  com.solvd.autoservice.Main -  Finally 
+2021-47-06 12:47:35.488 [main] INFO  com.solvd.autoservice.Main -  Radius 15 
+2021-47-06 12:47:35.491 [main] INFO  com.solvd.autoservice.Main - R15
+2021-47-06 12:47:35.491 [main] INFO  com.solvd.autoservice.Main - R15
+2021-47-06 12:47:35.492 [main] INFO  com.solvd.autoservice.Main - R17
+2021-47-06 12:47:35.492 [main] INFO  com.solvd.autoservice.Main - R15
+2021-47-06 12:47:35.492 [main] INFO  com.solvd.autoservice.Main -  Wheel Radius - 15 
+2021-47-06 12:47:35.493 [main] INFO  com.solvd.autoservice.Main -  Wheels R15 are in stock 
+2021-47-06 12:47:35.494 [main] INFO  com.solvd.autoservice.Main -  BMW 
+2021-47-06 12:47:35.494 [main] INFO  com.solvd.autoservice.Main - BMW
+2021-47-06 12:47:35.494 [main] INFO  com.solvd.autoservice.Main -  Audi 
+2021-47-06 12:47:35.495 [main] INFO  com.solvd.autoservice.Main -  American 
+2021-47-06 12:47:35.495 [main] INFO  com.solvd.autoservice.Main - ASIA
+2021-47-06 12:47:35.495 [main] INFO  com.solvd.autoservice.Main -  American USA
+2021-47-06 12:47:35.495 [main] INFO  com.solvd.autoservice.Main -  American client 
+2021-47-06 12:47:35.496 [main] INFO  com.solvd.autoservice.Main - [Detail{detailName='mirror'}, Detail{detailName='mirror2'}, Detail{detailName='wheel'}]
+2021-47-06 12:47:35.496 [main] INFO  com.solvd.autoservice.Main - ID =  1 Regular Client Name = RegularClient{id=1, firstName='Artur', lastName='Hodyakov'}
+2021-47-06 12:47:35.496 [main] INFO  com.solvd.autoservice.Main - ID =  2 Regular Client Name = RegularClient{id=2, firstName='John', lastName='Kapustin'}
+2021-47-06 12:47:35.496 [main] INFO  com.solvd.autoservice.Main - ID =  3 Regular Client Name = RegularClient{id=3, firstName='David', lastName='Duhovny'}
+2021-47-06 12:47:35.497 [main] INFO  com.solvd.autoservice.Main -  John should be displayed RegularClient{id=2, firstName='John', lastName='Kapustin'}
+2021-47-06 12:47:35.497 [main] INFO  com.solvd.autoservice.Main -  Is empty false
+2021-47-06 12:47:35.497 [main] INFO  com.solvd.autoservice.Main -  Map Size 3
+2021-47-06 12:47:35.497 [main] INFO  com.solvd.autoservice.Main -  Map HashCode -860177577
+2021-47-06 12:47:35.497 [main] INFO  com.solvd.autoservice.Main -  Linked List First Detail{detailName='wheel'}
+2021-47-06 12:47:35.497 [main] INFO  com.solvd.autoservice.Main -  Linked List Last Detail{detailName='mirror2'}
+2021-47-06 12:47:35.497 [main] INFO  com.solvd.autoservice.Main -  Client from TreeSet [com.solvd.autoservice.client.IndividualClient@49c43f4e, com.solvd.autoservice.client.IndividualClient@290dbf45, com.solvd.autoservice.client.IndividualClient@12028586, com.solvd.autoservice.client.IndividualClient@49c43f4e, com.solvd.autoservice.client.IndividualClient@49c43f4e, com.solvd.autoservice.client.IndividualClient@12028586]
+2021-47-06 12:47:35.498 [main] INFO  com.solvd.autoservice.Main - [Detail{detailName='mirror'}, Detail{detailName='mirror2'}, Detail{detailName='wheel'}]
+2021-47-06 12:47:35.498 [main] INFO  com.solvd.autoservice.Main - 3
+2021-47-06 12:47:35.498 [main] INFO  com.solvd.autoservice.Main - false
+2021-47-06 12:47:35.498 [main] INFO  com.solvd.autoservice.Main - [ Vin Code yegfugiu3678765; CarBrand Mercedes CarModel S class w223,  Capacity Volume Body  null; CarBrand Gaz CarModel 66,  CarBrand Harley Davidson CarModel Iron 833]
+2021-47-06 12:47:35.499 [main] INFO  com.solvd.autoservice.Main - get Instancecom.solvd.autoservice.autoservice.StorageSingletone@2bbaf4f0
+2021-47-06 12:47:35.500 [main] INFO  com.solvd.autoservice.Main -  Vin Code yegfugiu3678765; CarBrand Mercedes CarModel S class w223
+2021-47-06 12:47:35.500 [main] INFO  com.solvd.autoservice.Main -  Capacity Volume Body  null; CarBrand Gaz CarModel 66
+2021-47-06 12:47:35.500 [main] INFO  com.solvd.autoservice.autoservice.Order -  List of details: 
+ 
+2021-47-06 12:47:35.500 [main] INFO  com.solvd.autoservice.autoservice.Order -  Name mirror Price 233
+
+2021-47-06 12:47:35.501 [main] INFO  com.solvd.autoservice.autoservice.Order -  Name mirror2 Price 233
+
+2021-47-06 12:47:35.501 [main] INFO  com.solvd.autoservice.autoservice.Order -  Name wheel Price 100
+
+2021-47-06 12:47:35.501 [main] INFO  com.solvd.autoservice.autoservice.AutoService -  Storage Number  0
+2021-47-06 12:47:35.502 [main] INFO  com.solvd.autoservice.Main -  Get max speed minivan 180
+2021-47-06 12:47:35.502 [main] INFO  com.solvd.autoservice.Main -  Get max speed minivan 200
+2021-47-06 12:47:35.506 [main] INFO  com.solvd.autoservice.Main -  Order can be completed Sat Nov 06 14:47:35 MSK 2021
+2021-47-06 12:47:35.506 [main] INFO  com.solvd.autoservice.Main -  Sum of the order 566
+2021-47-06 12:47:35.506 [main] INFO  com.solvd.autoservice.Main -  Client size 6
+2021-47-06 12:47:35.506 [main] INFO  com.solvd.autoservice.Main -  Details wheel mirror mirror2
+2021-47-06 12:47:35.506 [main] INFO  com.solvd.autoservice.Main -  Will the order be completed?  true
+2021-47-06 12:47:35.507 [main] INFO  com.solvd.autoservice.Main -  Wrong Storage number
+2021-47-06 12:47:35.509 [main] INFO  com.solvd.autoservice.Main -  Finally 

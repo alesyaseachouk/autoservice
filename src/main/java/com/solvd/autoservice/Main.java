@@ -184,6 +184,9 @@ public class Main {
         cars.add(bike);
         LOGGER.info(cars);
 
+        StorageSingletone storage =StorageSingletone.getInstance();
+        LOGGER.info("get Instance" + storage);
+
         StorageWorker storageWorker = new StorageWorker("Feodor", "Brish");
         storageWorker.setFirstName("Anton");
         Manager manager = new Manager("Artyom", "Petrov");
