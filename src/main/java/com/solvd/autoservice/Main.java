@@ -7,20 +7,25 @@ import com.solvd.autoservice.detail.BodyPart;
 import com.solvd.autoservice.detail.Detail;
 import com.solvd.autoservice.detail.DetailInStock;
 import com.solvd.autoservice.detail.Wheel;
-import com.solvd.autoservice.employee.Employee;
 import com.solvd.autoservice.employee.Manager;
 import com.solvd.autoservice.employee.StorageWorker;
 import com.solvd.autoservice.exceptions.WrongStorageNumberException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
+import java.lang.reflect.*;
 import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+import static java.util.Arrays.asList;
 
 public class Main {
 
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 
         IndividualClient client1 = new IndividualClient("Petr", "Petrov", "mercedes");
         IndividualClient client22 = new IndividualClient("Ivan", "Orlov", "gaz");
@@ -36,16 +41,18 @@ public class Main {
         LOGGER.info(Wheel.R15.getName());
         LOGGER.info(Wheel.R15.name());
 
-        for (Wheel wheel1 : Wheel.values()) {
-            LOGGER.info(wheel1.name());
-        }
+        List<DetailInStock> detailInStockList = new ArrayList<>();
+        detailInStockList.stream()
+                .filter(wheel1 -> wheel1.equals(Wheel.values()))
+                .collect(Collectors.toList());
+        LOGGER.info(detailInStockList);
 
         String name = " R15 ";
         Wheel showWheelRadius = Wheel.showWheelRadius(name);
         LOGGER.info(Wheel.showWheelRadius(name));
 
         String radiusWheel;
-        if (Wheel.R15.equals(showWheelRadius)){
+        if (Wheel.R15.equals(showWheelRadius)) {
             radiusWheel = " Wheel Radius - 15 ";
         } else {
             radiusWheel = " Wheel radius - 17 ";
@@ -53,7 +60,7 @@ public class Main {
 
         LOGGER.info(radiusWheel);
 
-        switch (showWheelRadius){
+        switch (showWheelRadius) {
             case R15:
                 LOGGER.info(" Wheels R15 are in stock ");
                 break;
@@ -74,9 +81,9 @@ public class Main {
         LOGGER.info(Brand.showBrandName(brandName));
 
         String brands;
-        if (Brand.BMW.equals(showBrandName)){
+        if (Brand.BMW.equals(showBrandName)) {
             brands = " BMW ";
-        }else {
+        } else {
             brands = " Audi ";
         }
 
@@ -92,7 +99,7 @@ public class Main {
         ForeignClient getClientName = ForeignClient.getClientName(clientName);
         LOGGER.info(" American " + ForeignClient.getClientName(clientName));
 
-        switch (getClientName){
+        switch (getClientName) {
             case USA:
                 LOGGER.info(" American client ");
                 break;
@@ -110,10 +117,56 @@ public class Main {
         details.add(mirror2);
         details.add(wheel);
 
+        List<Storage> storages = new ArrayList<>();
+        IntStream.range(1, 4)
+                .mapToObj(i -> new Storage("Storage" + i))
+                .peek(f -> IntStream.range(1, 4)
+                        .mapToObj(i -> new Detail("mirror" + i + f.getDetails()) {
+                            @Override
+                            public String getDetailName() {
+                                return super.getDetailName();
+                            }
+                        })
+                        .forEach(f.getDetails()::add))
+                .flatMap(f -> f.getDetails().stream())
+                .forEach(b -> LOGGER.info(b.getDetailName()));
+
+
+        Stream.of(asList("mirror", "mirror2")).flatMap(h -> h.stream());
+
         List<Client> clients = new ArrayList<>();
         clients.add(client1);
         clients.add(client22);
         clients.add(client2);
+
+        clients.stream().filter(y -> {
+            LOGGER.info(" Filter stream ");
+            return y.equals(" Petr ");
+        }).count();
+
+        List<String> carNameList = Arrays.asList("BMW1", "BMW2", "Audi1", "Mercedes", "Gaz");
+        carNameList
+                .stream()
+                .filter(s -> s.startsWith("B"))
+                .map(String::toLowerCase)
+                .sorted()
+                .forEach(s -> LOGGER.info(" Map To Lower Case " + s));
+
+        Arrays.asList("BMW2", "Audi1", "Mercedes", "Gaz")
+                .stream()
+                .findFirst()
+                .ifPresent(s -> LOGGER.info(" Find First " + s));
+
+        Stream.of("Audi1", "BMW2", "Mercedes", "Gaz")
+                .findFirst()
+                .ifPresent(s -> LOGGER.info(" Find First2 " + s));
+
+        List<BodyPart> bodyPartList = Arrays.asList(mirror, mirror2, wheel)
+                .stream()
+                .filter(p -> p.isOnStorage())
+                .collect(Collectors.toList());
+
+        LOGGER.info(" Body Parts Filterred and Collected " + bodyPartList);
 
         Order order = new Order(clients, details);
 
@@ -184,8 +237,56 @@ public class Main {
         cars.add(bike);
         LOGGER.info(cars);
 
-        StorageSingletone storage =StorageSingletone.getInstance();
+        StorageSingletone storage = StorageSingletone.getInstance();
         LOGGER.info("get Instance" + storage);
+
+        Courier courier = new Courier();
+        Class cls = courier.getClass();
+        Class cls1 = Courier.class;
+        Class cls2 = Class.forName("com.solvd.autoservice.Courier");
+        Courier courier1 = (Courier) cls.newInstance();
+
+        LOGGER.info(" Constructors: ");
+        Constructor[] constructors = cls.getDeclaredConstructors();
+        for (Constructor constructor : constructors) {
+            LOGGER.info(constructor.getName());
+            Parameter[] parameters = constructor.getParameters();
+            for (Parameter parameter : parameters) {
+                LOGGER.info(parameter.getName());
+                LOGGER.info(parameter.getType());
+            }
+        }
+
+        LOGGER.info(" Methods: ");
+        Method[] methods = cls.getDeclaredMethods();
+        for (Method method : methods) {
+            LOGGER.info(method.getName());
+            Parameter[] parameters = method.getParameters();
+            for (Parameter parameter : parameters) {
+                LOGGER.info(parameter.getName());
+                LOGGER.info(parameter.getType());
+            }
+            LOGGER.info(Modifier.toString((method.getModifiers())));
+        }
+
+        LOGGER.info(" Fields: ");
+        Field[] fields = cls.getDeclaredFields();
+        for (Field field : fields) {
+            LOGGER.info(field.getName());
+            LOGGER.info(field.getType().getName());
+            LOGGER.info(Modifier.toString(field.getModifiers()));
+//            field.setAccessible(true);
+//            LOGGER.info(field.getInt(courier));
+//            field.setInt(courier,10);
+//            LOGGER.info(field.getInt(courier));
+        }
+
+        Runnable doDelivery = () -> LOGGER.info(" Runnable lambda ");
+        Function<String, Integer> takeToDelivery = deliveryInProgress -> deliveryInProgress.length();
+
+        Delivery delivery = new Delivery();
+        delivery.doingDelivery(doDelivery);
+        delivery.doingDeliveryIn(takeToDelivery);
 
         StorageWorker storageWorker = new StorageWorker("Feodor", "Brish");
         storageWorker.setFirstName("Anton");
@@ -204,7 +305,7 @@ public class Main {
         order.printDetails();
         AutoService.getStorageNumber();
 
-        Minivan toyotaSienna = new Minivan("Tayota", "Siena", "jyuehc567", 180,4);
+        Minivan toyotaSienna = new Minivan("Tayota", "Siena", "jyuehc567", 180, 4);
         Minivan hondaOdyssey = new Minivan("Honda", "Odyssey", "gcfwyfry55", 200, 4);
         List<Minivan> minivans = new ArrayList<>();
         minivans.add(toyotaSienna);
@@ -215,10 +316,12 @@ public class Main {
 
         Minivan discountForMinivan = discount.gettingDiscount(toyotaSienna);
 
-        for (Car minivan : discount.getCars()) {
-            minivan.getMaxSpeed();
-            LOGGER.info(" Get max speed minivan " + minivan.getMaxSpeed());
-        }
+        List<Minivan> minivanList = new ArrayList<>();
+
+        minivanList.stream()
+                .filter(minivan -> minivan == discount.getCars())
+                .collect(Collectors.toList());
+        LOGGER.info(" Get max speed minivan " + discountForMinivan.getMaxSpeed());
 
         Manager manager3 = new Manager("Andrew", "Petrov");
         Manager manager4 = new Manager("Ondrew", "Orlov");
@@ -233,9 +336,10 @@ public class Main {
 
         Manager corporateForManager = corporate.<Manager>gettingCorporate(manager3);
 
-        for (Employee manager5 : corporate.getEmployees()) {
-            manager5.getLastName();
-        }
+        managers.stream()
+                .filter(manager1 -> manager1 == corporate.getEmployees())
+                .collect(Collectors.toList());
+        LOGGER.info(" Manager stream " + corporateForManager.getLastName());
 
         StorageWorker loader = new StorageWorker("Nikolai", "Lalilalai");
         StorageWorker security = new StorageWorker("Petya", "Vasiliev");
@@ -246,9 +350,10 @@ public class Main {
         Vacation<StorageWorker> vacation = new Vacation<>();
         vacation.setStorageWorkers(storageWorkers);
 
-        for (StorageWorker storageWorker5 : vacation.getStorageWorkers()) {
-            storageWorker5.getLastName();
-        }
+        storageWorkers.stream()
+                .filter(storageWorker1 -> storageWorker1 == vacation.getStorageWorkers())
+                .collect(Collectors.toList());
+        LOGGER.info(" Storage Worker Stream " + vacation.getStorageWorkers());
 
         LOGGER.info(" Order can be completed " + order.getFinishDate());
         LOGGER.info(" Sum of the order " + sum);
@@ -257,7 +362,7 @@ public class Main {
         LOGGER.info(" Will the order be completed?  " + order.canOrderBeCompleted());
 
         try {
-            AutoService.setStorageNumber(0);
+            AutoService.setStorageNumber(2);
         } catch (WrongStorageNumberException e) {
             e.printStackTrace();
             LOGGER.info(" Wrong Storage number");
@@ -283,5 +388,4 @@ public class Main {
         LOGGER.info(" Storage worker today is " + storageWorker);
         LOGGER.info(" This is for RunTime exception " + client2.getFirstName() + client2.getLastName());
     }
-
 }

@@ -12,6 +12,10 @@ public abstract class Detail {
         this.onStorage = onStorage;
     }
 
+    public Detail(String detailName){
+        this.detailName = detailName;
+    }
+
     public String getDetailName() {
         return detailName;
     }
