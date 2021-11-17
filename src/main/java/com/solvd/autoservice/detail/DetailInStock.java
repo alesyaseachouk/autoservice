@@ -1,6 +1,11 @@
 package com.solvd.autoservice.detail;
 
-public class DetailInStock {
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+public class DetailInStock extends Thread{
+
+    private static final Logger LOGGER = LogManager.getLogger(DetailInStock.class);
 
     private Wheel wheel;
 

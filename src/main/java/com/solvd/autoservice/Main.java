@@ -9,11 +9,11 @@ import com.solvd.autoservice.detail.DetailInStock;
 import com.solvd.autoservice.detail.Wheel;
 import com.solvd.autoservice.employee.Manager;
 import com.solvd.autoservice.employee.StorageWorker;
-import com.solvd.autoservice.exceptions.WrongStorageNumberException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import java.lang.reflect.*;
 import java.util.*;
+import java.util.concurrent.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -25,7 +25,7 @@ public class Main {
 
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
-    public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+    public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, InterruptedException {
 
         IndividualClient client1 = new IndividualClient("Petr", "Petrov", "mercedes");
         IndividualClient client22 = new IndividualClient("Ivan", "Orlov", "gaz");
@@ -361,31 +361,101 @@ public class Main {
         LOGGER.info(" Details " + wheel.getDetailName() + " " + mirror.getDetailName() + " " + mirror2.getDetailName());
         LOGGER.info(" Will the order be completed?  " + order.canOrderBeCompleted());
 
+//        try {
+//            AutoService.setStorageNumber(2);
+//        } catch (WrongStorageNumberException e) {
+//            e.printStackTrace();
+//            LOGGER.info(" Wrong Storage number");
+//        } finally {
+//            LOGGER.info(" Finally ");
+//        }
+//
+//        String clien3 = null;
+//        if (clien3.equals(" Null Pointer Exception ")) {
+//        }
+//
+//        try (OrderResource orderResource = new OrderResource()) {
+//            LOGGER.info(" Auto closed ");
+//        }
+//
+//        for (Car car : cars) {
+//            car.getMaxSpeed();
+//            car.carryPassengers();
+//        }
+//
+//        LOGGER.info(passengerCar);
+//        LOGGER.info(" The manager today is " + manager);
+//        LOGGER.info(" Storage worker today is " + storageWorker);
+//        LOGGER.info(" This is for RunTime exception " + client2.getFirstName() + client2.getLastName());
+
+        IntStream.range(0,100)
+                .boxed()
+                .forEach(index-> {
+                    Customer myThread = new Customer(" Customer Thread " + index);
+                    myThread.start();
+                });
+
+        IntStream.range(0,100)
+                .boxed()
+                .forEach(index-> {
+                    CustomerFromRunnable threadFromRunnable = new CustomerFromRunnable(" Thread " + index);
+                    Thread thread = new Thread(threadFromRunnable);
+                    thread.start();
+                });
+
+        Thread.currentThread();
+        LOGGER.info(" Before sleeping ");
+        Thread.sleep(2000);
+        LOGGER.info(" After sleeping ");
+
+        CustomerFromRunnable customer = new CustomerFromRunnable(" Oleg ");
+        customer.setLastName(" Suvorinkov ");
+        LOGGER.info(" Oleg Suvorinkov " + customer);
+
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
+        IntStream.range(0,100)
+                .boxed()
+                .forEach(index-> {
+                    executorService.submit( ()-> {
+                        LOGGER.info(" In Thread " + index);
+                        try {
+                            Thread.sleep(500);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    });
+                });
+
+        CompletableFuture<String> newDeliveryFuture = CompletableFuture.supplyAsync(() -> {
+            LOGGER.info(" Inside the New Delivery Future ");
+            return " New Delivery Future ";
+        });
+
+        LOGGER.info(" After New Delivery Future ");
+
         try {
-            AutoService.setStorageNumber(2);
-        } catch (WrongStorageNumberException e) {
+            newDeliveryFuture.get(1, TimeUnit.SECONDS);
+        } catch (ExecutionException e) {
             e.printStackTrace();
-            LOGGER.info(" Wrong Storage number");
-        } finally {
-            LOGGER.info(" Finally ");
+        } catch (TimeoutException e) {
+            e.printStackTrace();
         }
+        LOGGER.info(" Delivery ");
 
-        String clien3 = null;
-        if (clien3.equals(" Null Pointer Exception ")) {
+        CompletableFuture<String> promotionFuture = CompletableFuture.supplyAsync(() -> {
+            LOGGER.info(" Inside Promotion Future ");
+            return " Promotion Future ";
+        }).thenApply( result-> {
+            return " This is " + result;
+        }).thenApply( description-> {
+            return description + " for better work ";
+        });
+
+        try {
+            LOGGER.info(promotionFuture.get());
+        } catch (ExecutionException e) {
+            e.printStackTrace();
         }
-
-        try (OrderResource orderResource = new OrderResource()) {
-            LOGGER.info(" Auto closed ");
-        }
-
-        for (Car car : cars) {
-            car.getMaxSpeed();
-            car.carryPassengers();
-        }
-
-        LOGGER.info(passengerCar);
-        LOGGER.info(" The manager today is " + manager);
-        LOGGER.info(" Storage worker today is " + storageWorker);
-        LOGGER.info(" This is for RunTime exception " + client2.getFirstName() + client2.getLastName());
+        
     }
 }

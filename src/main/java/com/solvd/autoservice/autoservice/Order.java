@@ -7,7 +7,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.Date;
 import java.util.List;
 
-public class Order {
+public class Order extends Thread{
 
     private static final Logger LOGGER = LogManager.getLogger (Order.class);
 
