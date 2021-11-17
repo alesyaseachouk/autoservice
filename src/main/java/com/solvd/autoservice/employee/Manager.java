@@ -1,6 +1,6 @@
 package com.solvd.autoservice.employee;
 
-public class Manager extends Employee {
+public class Manager extends Employee{
 
     public Manager(String firstName, String lastName) {
         super(firstName, lastName);
